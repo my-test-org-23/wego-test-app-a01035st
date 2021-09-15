@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-he34cc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-he34cc
+  namespace: my-nginx-he34cc
+  labels:
+    name: nginx-he34cc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-he34cc
+  template:
+    metadata:
+      namespace: my-nginx-he34cc
+      labels:
+        name: nginx-he34cc
+    spec:
+      containers:
+      - name: nginx-he34cc
+        image: nginx
+        ports:
+        - containerPort: 80
+
